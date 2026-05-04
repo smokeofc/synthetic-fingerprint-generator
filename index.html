@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synthetic Fingerprint Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Synthetic Fingerprint Generator</h1>
+    <p class="subtitle">Procedural fingerprints for game assets &amp; mockups. Pure browser, no backend.</p>
+  </header>
+
+  <main>
+    <aside class="controls" id="controls">
+      <fieldset>
+        <legend>Pattern</legend>
+        <label>Type
+          <select id="preset">
+            <option value="loop_left">Left loop</option>
+            <option value="loop_right" selected>Right loop</option>
+            <option value="whorl">Whorl</option>
+            <option value="double_loop">Double loop</option>
+            <option value="arch">Arch</option>
+            <option value="tented_arch">Tented arch</option>
+          </select>
+        </label>
+        <label>Seed
+          <span class="row">
+            <input type="number" id="seed" value="1337" min="0" step="1" />
+            <button type="button" id="randomize" title="Randomize seed (R)">🎲</button>
+          </span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ridges</legend>
+        <label>Ridge spacing <output id="spacingOut">7.0</output>
+          <input type="range" id="spacing" min="3" max="14" step="0.5" value="7" />
+        </label>
+        <label>Ridge thickness <output id="thicknessOut">1.6</output>
+          <input type="range" id="thickness" min="0.4" max="3.5" step="0.1" value="1.6" />
+        </label>
+        <label>Gap / break amount <output id="gapsOut">0.18</output>
+          <input type="range" id="gaps" min="0" max="0.6" step="0.01" value="0.18" />
+        </label>
+        <label>Thickness jitter <output id="jitterOut">0.25</output>
+          <input type="range" id="jitter" min="0" max="0.7" step="0.01" value="0.25" />
+        </label>
+        <label>
+          <input type="checkbox" id="pores" />
+          Add pores
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fingertip shape</legend>
+        <label>Width <output id="widthOut">0.78</output>
+          <input type="range" id="ellipseW" min="0.4" max="0.95" step="0.01" value="0.78" />
+        </label>
+        <label>Height <output id="heightOut">0.92</output>
+          <input type="range" id="ellipseH" min="0.5" max="0.98" step="0.01" value="0.92" />
+        </label>
+        <label>Tilt (deg) <output id="tiltOut">0</output>
+          <input type="range" id="tilt" min="-25" max="25" step="1" value="0" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Style</legend>
+        <label>Ink color
+          <input type="color" id="color" value="#111111" />
+        </label>
+        <label>PNG export size
+          <select id="pngSize">
+            <option value="512">512 px</option>
+            <option value="1024" selected>1024 px</option>
+            <option value="2048">2048 px</option>
+            <option value="custom">Custom…</option>
+          </select>
+        </label>
+        <label id="pngCustomWrap" hidden>Custom PNG width
+          <input type="number" id="pngCustom" value="1500" min="64" max="8192" step="1" />
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button type="button" id="regen">Regenerate</button>
+        <button type="button" id="dlSvg">Download SVG</button>
+        <button type="button" id="dlPng">Download PNG</button>
+      </div>
+
+      <p class="hint">Tip: press <kbd>R</kbd> for a new random seed.</p>
+    </aside>
+
+    <section class="preview-wrap">
+      <div class="preview" id="preview" aria-live="polite">
+        <!-- SVG injected here -->
+      </div>
+      <div class="status" id="status">Ready.</div>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
