@@ -6,6 +6,12 @@ Intended for quickly producing fingerprint art for game assets, UI mockups, or a
 
 ---
 
+## Live Demo
+
+https://smokeofc.github.io/synthetic-fingerprint-generator/
+
+---
+
 ## WARNING:
 
 This project is mostly generated using AI tools (Claude Opus 4.7 and GitHub Copilot). While I’ve done my best to verify the code and fix any issues, there may still be bugs, security vulnerabilities, or other problems. Use at your own risk, and please report any issues you find.
